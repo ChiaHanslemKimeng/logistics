@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Staff Dashboard{% endblock %}
+
+{% block content %}
+<div class="px-4 md:px-12 py-8 bg-gray-50 min-h-screen">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">Staff Portal: {{ user.first_name }}</h1>
+            <p class="text-gray-500">Manage your assigned shipments and updates.</p>
+        </div>
+        <a href="{% url 'create_shipment' %}" class="btn btn-primary rounded-xl shadow-lg"><i
+                class="fas fa-plus mr-2"></i> Create New Shipment</a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-4">
+            <div class="p-4 bg-blue-50 text-blue-600 rounded-2xl"><i class="fas fa-shipping-fast fa-xl"></i></div>
+            <div>
+                <h3 class="text-gray-400 text-sm font-medium">Assigned</h3>
+                <p class="text-2xl font-bold text-gray-800">{{ shipments.count }}</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-4">
+            <div class="p-4 bg-green-50 text-green-600 rounded-2xl"><i class="fas fa-clipboard-check fa-xl"></i></div>
+            <div>
+                <h3 class="text-gray-400 text-sm font-medium">Completed</h3>
+                <p class="text-2xl font-bold text-gray-800">{{ shipments.filter.status|default:0 }}</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-4">
+            <div class="p-4 bg-yellow-50 text-yellow-600 rounded-2xl"><i class="fas fa-exclamation-circle fa-xl"></i>
+            </div>
+            <div>
+                <h3 class="text-gray-400 text-sm font-medium">Pending Updates</h3>
+                <p class="text-2xl font-bold text-gray-800">5</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Shipments Table -->
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-6 border-b border-gray-100">
+            <h2 class="text-xl font-bold text-gray-800">My Assigned Shipments</h2>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="table w-full">
+                <thead>
+                    <tr class="text-gray-400">
+                        <th>Tracking #</th>
+                        <th>Receiver</th>
+                        <th>Status</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shipment in shipments %}
+                    <tr class="hover">
+                        <td class="font-bold text-blue-600">{{ shipment.tracking_number }}</td>
+                        <td>{{ shipment.receiver_name }}</td>
+                        <td>
+                            <span class="badge badge-outline p-3">{{ shipment.get_status_display }}</span>
+                        </td>
+                        <td class="text-sm">{{ shipment.current_city }}, {{ shipment.current_country }}</td>
+                        <td>
+                            <div class="flex gap-2">
+                                <a href="{% url 'update_shipment' shipment.id %}"
+                                    class="btn btn-sm btn-ghost text-blue-500 rounded-lg">Update</a>
+                                <a href="{% url 'tracking_result' %}?number={{ shipment.tracking_number }}"
+                                    class="btn btn-sm btn-ghost rounded-lg">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center py-12 text-gray-400">No shipments assigned to you yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

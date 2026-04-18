@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}Super Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="px-4 md:px-12 py-8 bg-gray-50 min-h-screen">
+    <!-- Welcome Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+        <div>
+            <h1 class="text-3xl font-bold text-gray-800">Hello, {{ user.first_name|default:user.username }}!</h1>
+            <p class="text-gray-500">Welcome back to your command center.</p>
+        </div>
+        <div class="flex gap-2">
+            <button class="btn btn-primary rounded-xl"><i class="fas fa-plus mr-2"></i> New Shipment</button>
+            <button class="btn btn-outline rounded-xl"><i class="fas fa-user-plus mr-2"></i> Add Staff</button>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-blue-50 text-blue-600 rounded-2xl"><i class="fas fa-box fa-xl"></i></div>
+                <span class="text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-lg">+12%</span>
+            </div>
+            <h3 class="text-gray-400 text-sm font-medium">Total Shipments</h3>
+            <p class="text-2xl font-bold text-gray-800">{{ total }}</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-green-50 text-green-600 rounded-2xl"><i class="fas fa-check-circle fa-xl"></i></div>
+                <span class="text-xs font-bold text-gray-400">Stable</span>
+            </div>
+            <h3 class="text-gray-400 text-sm font-medium">Delivered</h3>
+            <p class="text-2xl font-bold text-gray-800">{{ delivered }}</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-yellow-50 text-yellow-600 rounded-2xl"><i class="fas fa-clock fa-xl"></i></div>
+                <span class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-lg">-4%</span>
+            </div>
+            <h3 class="text-gray-400 text-sm font-medium">Pending</h3>
+            <p class="text-2xl font-bold text-gray-800">{{ pending }}</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-purple-50 text-purple-600 rounded-2xl"><i class="fas fa-users fa-xl"></i></div>
+                <span class="text-xs font-bold text-blue-500 bg-blue-50 px-2 py-1 rounded-lg">Active</span>
+            </div>
+            <h3 class="text-gray-400 text-sm font-medium">Support Staff</h3>
+            <p class="text-2xl font-bold text-gray-800">24</p>
+        </div>
+    </div>
+
+    <!-- Recent Shipments Table -->
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center">
+            <h2 class="text-xl font-bold text-gray-800">Recent Shipments</h2>
+            <form method="GET" action="{% url 'dashboard' %}" class="join">
+                <input class="input input-sm input-bordered join-item" name="q" value="{{ search_query }}"
+                    placeholder="Search tracking #..." />
+                <button type="submit" class="btn btn-sm btn-primary join-item">Search</button>
+            </form>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="table table-zebra w-full">
+                <thead>
+                    <tr class="text-gray-400 h-12">
+                        <th>Tracking Number</th>
+                        <th>Sender</th>
+                        <th>Receiver</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shipment in shipments %}
+                    <tr class="hover">
+                        <td class="font-bold text-blue-600">{{ shipment.tracking_number }}</td>
+                        <td>{{ shipment.sender_name }}</td>
+                        <td>{{ shipment.receiver_name }}</td>
+                        <td>
+                            <span
+                                class="badge {% if shipment.status == 'DELIVERED' %}badge-success text-white{% else %}badge-ghost{% endif %} p-3">
+                                {{ shipment.get_status_display }}
+                            </span>
+                        </td>
+                        <td class="text-gray-500 text-xs">{{ shipment.created_at|date:"M d, Y H:i" }}</td>
+                        <td>
+                            <div class="flex gap-2">
+                                <button class="btn btn-square btn-ghost btn-xs text-blue-600"><i
+                                        class="fas fa-edit"></i></button>
+                                <button class="btn btn-square btn-ghost btn-xs text-red-400"><i
+                                        class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center py-12 text-gray-400 font-medium">
+                            <i class="fas fa-folder-open fa-3x mb-4 block"></i>
+                            No shipments found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="p-4 border-t border-gray-100 text-center">
+            <button class="btn btn-ghost btn-sm text-blue-600 hover:underline">View All Shipments</button>
+        </div>
+    </div>
+
+    <!-- Activity Log Section -->
+    <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="p-6 border-b border-gray-100">
+                <h2 class="text-xl font-bold text-gray-800">System Activity Logs</h2>
+            </div>
+            <div class="p-6">
+                <ul class="space-y-4">
+                    {% for log in logs %}
+                    <li class="flex items-start gap-4">
+                        <div class="p-2 bg-blue-50 rounded-lg text-blue-600"><i class="fas fa-history text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">{{ log.action }} <span
+                                    class="text-gray-400 font-normal">by</span> {{ log.user.username }}</p>
+                            <p class="text-xs text-gray-400">{{ log.timestamp|timesince }} ago</p>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <p class="text-center py-4 text-gray-400">No logs available.</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

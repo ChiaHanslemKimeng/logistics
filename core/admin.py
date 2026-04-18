@@ -1,0 +1,17 @@
+from django.contrib import admin
+from .models import BlogPost, Review
+
+@admin.register(BlogPost)
+class BlogPostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author', 'created_at')
+    prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rating', 'is_approved', 'created_at')
+    list_filter = ('is_approved', 'rating')
+    actions = ['approve_reviews']
+
+    def approve_reviews(self, request, queryset):
+        queryset.update(is_approved=True)
+    approve_reviews.short_description = "Approve selected reviews"

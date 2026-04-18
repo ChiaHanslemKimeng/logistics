@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Shipment - {{ shipment.tracking_number }}{% endblock %}
+
+{% block content %}
+<div class="px-4 md:px-12 py-12 bg-gray-50 flex items-center justify-center">
+    <div class="max-w-xl w-full">
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+            <div class="p-8 bg-blue-600 text-white">
+                <h1 class="text-2xl font-bold">Update Shipment Status</h1>
+                <p class="text-blue-100 opacity-80">Tracking #: {{ shipment.tracking_number }}</p>
+            </div>
+
+            <form method="POST" class="p-8 space-y-6">
+                {% csrf_token %}
+
+                <div class="card bg-gray-50 p-6 rounded-2xl border border-dashed border-gray-200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-white rounded-xl shadow-sm"><i
+                                class="fas fa-map-marker-alt text-red-500"></i></div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Current Location</p>
+                            <p class="font-medium text-gray-800">{{ shipment.current_city }}, {{
+                                shipment.current_country }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="p-3 bg-white rounded-xl shadow-sm"><i class="fas fa-sync text-blue-500"></i></div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Current Status</p>
+                            <p class="font-medium text-gray-800">{{ shipment.get_status_display }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="label text-sm font-semibold text-gray-700">New Status</label>
+                        {{ form.status }}
+                    </div>
+                    <div>
+                        <label class="label text-sm font-semibold text-gray-700">New City</label>
+                        {{ form.current_city }}
+                    </div>
+                    <div>
+                        <label class="label text-sm font-semibold text-gray-700">New Country</label>
+                        {{ form.current_country }}
+                    </div>
+                </div>
+
+                <div class="pt-4 flex gap-4">
+                    <button type="submit" class="btn btn-primary flex-grow rounded-xl shadow-lg">Save Update</button>
+                    <a href="{% url 'dashboard' %}" class="btn btn-ghost rounded-xl">Back</a>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-8 text-center text-gray-400 text-sm">
+            <i class="fas fa-info-circle mr-2"></i> This update will automatically notify the customer via email.
+        </div>
+    </div>
+</div>
+{% endblock %}

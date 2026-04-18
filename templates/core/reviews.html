@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Customer Reviews - Global Courier{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<div class="bg-gray-100 py-24 text-center">
+    <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-black text-gray-800 mb-6 tracking-tighter">Customer Experiences</h1>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto">See what our clients say about our global logistics services
+            and share your own story with us.</p>
+    </div>
+</div>
+
+<div class="container mx-auto px-4 py-24">
+    <div class="flex flex-col lg:flex-row gap-16">
+        <!-- Reviews List -->
+        <div class="lg:w-2/3">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-3xl font-bold text-gray-800">Latest Feedback</h2>
+                <div class="badge badge-primary p-4 rounded-xl">{{ reviews.count }} Reviews</div>
+            </div>
+
+            <div class="space-y-8">
+                {% for review in reviews %}
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-lg transition-all">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 font-bold">
+                                {{ review.name|slice:":1"|upper }}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">{{ review.name }}</h4>
+                                <p class="text-xs text-gray-400">{{ review.created_at|date:"M d, Y" }}</p>
+                            </div>
+                        </div>
+                        <div class="flex text-yellow-400">
+                            {% for i in "12345" %}
+                            {% if forloop.counter <= review.rating %} <i class="fas fa-star text-sm"></i>
+                                {% else %}
+                                <i class="far fa-star text-sm"></i>
+                                {% endif %}
+                                {% endfor %}
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed italic">"{{ review.message }}"</p>
+                </div>
+                {% empty %}
+                <div class="text-center py-12 bg-gray-50 rounded-3xl border-2 border-dashed">
+                    <p class="text-gray-400 italic">No reviews yet. Be the first to share!</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Submission Form -->
+        <div class="lg:w-1/3">
+            <div class="bg-blue-900 p-10 rounded-[2.5rem] shadow-2xl text-white sticky top-24">
+                <h3 class="text-2xl font-bold mb-6">Leave a Review</h3>
+                <p class="text-blue-200 text-sm mb-8">Your feedback helps us provide better service to everyone. All
+                    reviews are moderated.</p>
+
+                <form method="POST" class="space-y-5">
+                    {% csrf_token %}
+                    <div>
+                        <label class="label text-xs font-bold uppercase tracking-widest text-blue-300">Your Name</label>
+                        {{ form.name }}
+                    </div>
+                    <div>
+                        <label class="label text-xs font-bold uppercase tracking-widest text-blue-300">Email
+                            Address</label>
+                        {{ form.email }}
+                    </div>
+                    <div>
+                        <label class="label text-xs font-bold uppercase tracking-widest text-blue-300">Star
+                            Rating</label>
+                        {{ form.rating }}
+                    </div>
+                    <div>
+                        <label class="label text-xs font-bold uppercase tracking-widest text-blue-300">Your
+                            Message</label>
+                        {{ form.message }}
+                    </div>
+                    <button type="submit"
+                        class="btn btn-primary w-full h-14 rounded-2xl shadow-xl shadow-blue-800 mt-4 border-none bg-blue-500 hover:bg-blue-400">
+                        Submit Review
+                    </button>
+                </form>
+
+                {% if messages %}
+                <div class="mt-6">
+                    {% for message in messages %}
+                    <div
+                        class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} bg-opacity-10 border-blue-400 text-blue-100 text-sm">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

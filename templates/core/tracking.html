@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Track Your Parcel - Global Courier{% endblock %}
+
+{% block content %}
+<div class="bg-gray-50 py-24 px-4">
+    <div class="container mx-auto max-w-4xl text-center">
+        <div class="mb-12">
+            <h1 class="text-5xl font-black text-gray-800 mb-6 tracking-tighter">Track Your Shipment</h1>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto">Enter your unique tracking number below to get real-time
+                status updates on your parcel's location and estimated delivery time.</p>
+        </div>
+
+        <div class="bg-white p-12 rounded-3xl shadow-2xl border border-gray-100">
+            <form action="{% url 'tracking_result' %}" method="GET" class="space-y-6">
+                <div class="relative">
+                    <input type="text" name="number" placeholder="Enter Tracking Number (e.g. CT2026...)"
+                        class="input input-lg w-full h-20 px-10 rounded-2xl border-2 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all text-2xl font-bold tracking-widest text-gray-800"
+                        required>
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-300 text-xl">
+                        <i class="fas fa-barcode"></i>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="btn btn-primary btn-lg w-full h-16 rounded-2xl text-xl shadow-xl shadow-blue-200">
+                    <i class="fas fa-search mr-2"></i> Find My Parcel
+                </button>
+            </form>
+
+            <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-8 text-sm text-gray-400">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span>Real-time GPS Data</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span>Secure Encryption</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    <span>24/7 Monitoring</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Section -->
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+            <div class="p-8 bg-blue-50 rounded-3xl border border-blue-100">
+                <h4 class="text-xl font-bold text-blue-900 mb-4">Can't find your number?</h4>
+                <p class="text-blue-700 text-sm mb-6">Check your confirmation email or the physical shipping label
+                    provided at the pick-up point.</p>
+                <a href="{% url 'contact' %}" class="btn btn-ghost btn-sm text-blue-600 p-0">Contact Support <i
+                        class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            <div class="p-8 bg-green-50 rounded-3xl border border-green-100">
+                <h4 class="text-xl font-bold text-green-900 mb-4">Corporate Solutions</h4>
+                <p class="text-green-700 text-sm mb-6">Bulk tracking and API integrations are available for our
+                    enterprise partners.</p>
+                <a href="#" class="btn btn-ghost btn-sm text-green-600 p-0">Learn More <i
+                        class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

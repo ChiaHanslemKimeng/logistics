@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Global Courier{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-gray-100 py-32 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5 pointer-events-none">
+        <i class="fas fa-globe-americas text-[20rem] absolute -top-24 -left-24"></i>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 text-gray-800 tracking-tighter">Moving the World, <br />One
+            Parcel at a Time</h1>
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto">Founded in 2010, Global Courier has grown from a local
+            delivery service into a world-class logistics powerhouse.</p>
+    </div>
+</div>
+
+<!-- Mission Section -->
+<section class="py-24 px-4 md:px-12 bg-white">
+    <div class="container mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div class="md:w-1/2">
+            <div class="relative">
+                <img src="{% static 'images/slider_2.png' %}" class="rounded-3xl shadow-2xl" alt="Our Mission">
+                <div
+                    class="absolute -bottom-6 -right-6 bg-blue-600 text-white p-8 rounded-2xl shadow-xl hidden md:block">
+                    <p class="text-4xl font-bold mb-1">15+</p>
+                    <p class="text-sm opacity-80 uppercase tracking-widest">Years of Trust</p>
+                </div>
+            </div>
+        </div>
+        <div class="md:w-1/2">
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">Our Mission & Vision</h2>
+            <p class="text-gray-600 text-lg mb-6">To redefine logistics through innovation, security, and unmatched
+                customer service. We aim to be the most reliable link in the global supply chain, empowering businesses
+                and individuals to connect effortlessly.</p>
+            <div class="space-y-6">
+                <div class="flex gap-4">
+                    <div class="p-3 bg-blue-50 text-blue-600 rounded-xl h-fit"><i class="fas fa-shield-alt"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Uncompromised Security</h4>
+                        <p class="text-sm text-gray-500">We treat every parcel as if it were our own, with rigorous
+                            protocols and real-time tracking.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="p-3 bg-green-50 text-green-600 rounded-xl h-fit"><i class="fas fa-leaf"></i></div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">Sustainability First</h4>
+                        <p class="text-sm text-gray-500">We are committed to reducing our carbon footprint through
+                            electric vehicles and eco-friendly packaging.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- History Timeline -->
+<section class="py-24 bg-gray-50 px-4 md:px-12">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-gray-800 text-center mb-16">Our Journey</h2>
+        <div
+            class="max-w-4xl mx-auto space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-200 before:to-transparent">
+            <!-- 2010 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div
+                    class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                </div>
+                <div
+                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-white border border-gray-100 transition-all hover:shadow-lg">
+                    <div class="flex items-center justify-between space-x-2 mb-1">
+                        <div class="font-black text-gray-800">Founded in NY</div>
+                        <time class="font-bold text-blue-600">2010</time>
+                    </div>
+                    <div class="text-sm text-gray-500">Started with two electric vans and a dream to revolutionize urban
+                        delivery.</div>
+                </div>
+            </div>
+            <!-- 2015 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div
+                    class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                </div>
+                <div
+                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-white border border-gray-100 transition-all hover:shadow-lg">
+                    <div class="flex items-center justify-between space-x-2 mb-1">
+                        <div class="font-black text-gray-800">Global Expansion</div>
+                        <time class="font-bold text-blue-600">2015</time>
+                    </div>
+                    <div class="text-sm text-gray-500">Opened our first international hubs in London, Hong Kong, and
+                        Dubai.</div>
+                </div>
+            </div>
+            <!-- 2024 -->
+            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div
+                    class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                </div>
+                <div
+                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-6 rounded-3xl bg-white border border-gray-100 transition-all hover:shadow-lg">
+                    <div class="flex items-center justify-between space-x-2 mb-1">
+                        <div class="font-black text-gray-800">Tech Revolution</div>
+                        <time class="font-bold text-blue-600">2024</time>
+                    </div>
+                    <div class="text-sm text-gray-500">Launched our AI-driven tracking system and 100% electric delivery
+                        fleet.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="py-24 bg-blue-900 text-white px-4 md:px-12">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black mb-4">Our Core Values</h2>
+            <p class="text-blue-300">The principles that guide every delivery we make.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div class="p-8 rounded-3xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                <div class="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Reliability</h4>
+                <p class="text-sm text-blue-200">Consistency is the foundation of trust. We deliver on our promises,
+                    every single time.</p>
+            </div>
+            <div class="p-8 rounded-3xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                <div class="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Innovation</h4>
+                <p class="text-sm text-blue-200">We leverage cutting-edge technology to simplify the complexities of
+                    global logistics.</p>
+            </div>
+            <div class="p-8 rounded-3xl bg-white bg-opacity-5 hover:bg-opacity-10 transition-all">
+                <div class="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-4">Excellence</h4>
+                <p class="text-sm text-blue-200">Good enough isn't enough. We strive for excellence in every mile of the
+                    journey.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section Placeholder -->
+<section class="py-24 bg-white px-4 md:px-12">
+    <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-16">Meet Our Leadership</h2>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100">
+                <img src="{% static 'images/industry/team_1.jpg' %}"
+                    class="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-blue-50" alt="David Cheng">
+                <h4 class="font-bold text-gray-800">David Cheng</h4>
+                <p class="text-sm text-blue-600 mb-2 font-medium">CEO & Founder</p>
+                <p class="text-xs text-gray-400">Logistics visionary with 25 years of industry experience.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100">
+                <img src="{% static 'images/industry/team_2.jpg' %}"
+                    class="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-green-50"
+                    alt="Sarah Jenkins">
+                <h4 class="font-bold text-gray-800">Sarah Jenkins</h4>
+                <p class="text-sm text-blue-600 mb-2 font-medium">COO</p>
+                <p class="text-xs text-gray-400">Expert in operation optimization and tech integration.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100">
+                <img src="{% static 'images/industry/team_3.jpg' %}"
+                    class="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-purple-50"
+                    alt="Michael Ross">
+                <h4 class="font-bold text-gray-800">Michael Ross</h4>
+                <p class="text-sm text-blue-600 mb-2 font-medium">CTO</p>
+                <p class="text-xs text-gray-400">Building the tech stack that powers our tracking system.</p>
+            </div>
+            <div class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100">
+                <img src="{% static 'images/industry/team_4.jpg' %}"
+                    class="w-24 h-24 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-50"
+                    alt="Emily Stone">
+                <h4 class="font-bold text-gray-800">Emily Stone</h4>
+                <p class="text-sm text-blue-600 mb-2 font-medium">Customer Success</p>
+                <p class="text-xs text-gray-400">Ensuring every customer journey is smooth and pleasant.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

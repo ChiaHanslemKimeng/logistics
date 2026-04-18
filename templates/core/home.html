@@ -1,0 +1,479 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Slider Section -->
+<div class="relative h-[80vh] w-full overflow-hidden">
+    <div class="swiper mySwiper h-full">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide relative">
+                <img src="{% static 'images/slider_1.png' %}" class="w-full h-full object-cover" alt="Air Freight">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl text-white">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6">Global Air Logistics</h1>
+                        <p class="text-xl mb-8">Fastest worldwide delivery services for your urgent shipments.</p>
+                        <a href="{% url 'tracking' %}" class="btn btn-primary btn-lg rounded-xl">Track Your Parcel</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide relative">
+                <img src="{% static 'images/slider_2.png' %}" class="w-full h-full object-cover" alt="Custom Courier">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl text-white">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6">Smart Urban Delivery</h1>
+                        <p class="text-xl mb-8">Efficient last-mile delivery solutions with our modern electric fleet.
+                        </p>
+                        <a href="{% url 'services' %}" class="btn btn-primary btn-lg rounded-xl">Explore Services</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide relative">
+                <img src="{% static 'images/slider_3.png' %}" class="w-full h-full object-cover" alt="Warehousing">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl text-white">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6">Automated Storage</h1>
+                        <p class="text-xl mb-8">Next-gen warehousing and inventory management systems.</p>
+                        <a href="{% url 'about' %}" class="btn btn-primary btn-lg rounded-xl">About Global Courier</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide relative">
+                <img src="{% static 'images/slider_4.png' %}" class="w-full h-full object-cover" alt="Sea Freight">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-center px-4">
+                    <div class="max-w-4xl text-white">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-6">Comprehensive Sea Freight</h1>
+                        <p class="text-xl mb-8">Cost-effective global shipping solutions via major sea routes.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg rounded-xl">Get a Quote</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next text-white"></div>
+        <div class="swiper-button-prev text-white"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<!-- Introduction About Section -->
+<section class="py-24 bg-white px-4 md:px-12 border-b border-gray-50">
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2 relative">
+                <div
+                    class="absolute -top-12 -left-12 w-48 h-48 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob">
+                </div>
+                <div
+                    class="absolute -bottom-12 -right-12 w-48 h-48 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000">
+                </div>
+                <div class="relative">
+                    <img src="{% static 'images/slider_2.png' %}"
+                        class="rounded-3xl shadow-2xl relative z-10 w-full object-cover h-[500px]"
+                        alt="About Global Courier">
+                    <div
+                        class="absolute -bottom-8 -right-8 bg-blue-600 p-8 rounded-3xl shadow-xl z-20 text-white hidden md:block">
+                        <p class="text-4xl font-black mb-1">15+</p>
+                        <p class="text-xs font-bold uppercase tracking-widest opacity-80">Years Expertise</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2">
+                <span class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4 block">Our Story</span>
+                <h2 class="text-4xl md:text-6xl font-black text-gray-800 mb-8 tracking-tighter leading-tight">Leading
+                    the Way in <br>Global Logistics</h2>
+                <p class="text-xl text-gray-500 mb-8 leading-relaxed">Global Courier is not just a delivery company; we
+                    are your strategic partner in growth. With a footprint in over 150 countries, we combine
+                    cutting-edge technology with traditional reliability to move your business forward.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Advanced AI</h4>
+                            <p class="text-sm text-gray-400">Routes optimized by real-time AI for maximum speed.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center text-green-600 shrink-0">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Eco-Friendly</h4>
+                            <p class="text-sm text-gray-400">100% carbon-neutral delivery goals by 2030.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'about' %}"
+                    class="btn btn-outline btn-lg border-blue-600 text-blue-600 rounded-2xl px-12 group hover:bg-blue-600 hover:text-white transition-all">
+                    Discover More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Badge / Partners Section -->
+<section class="py-12 bg-white border-b border-gray-100 relative z-20">
+    <div class="container mx-auto px-4">
+        <p class="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">Trusted by Global Leaders
+        </p>
+        <div
+            class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-700 h-16">
+            <img src="{% static 'images/logos/apple.svg' %}" class="h-10 w-auto" alt="Apple">
+            <img src="{% static 'images/logos/amazon.svg' %}" class="h-8 w-auto" alt="Amazon">
+            <img src="{% static 'images/logos/fedex.svg' %}" class="h-8 w-auto" alt="FedEx">
+            <img src="{% static 'images/logos/ups.svg' %}" class="h-10 w-auto" alt="UPS">
+            <img src="{% static 'images/logos/dhl.svg' %}" class="h-6 w-auto" alt="DHL">
+            <img src="{% static 'images/logos/ebay.svg' %}" class="h-10 w-auto" alt="eBay">
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-24 px-4 md:px-12 bg-white">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="flex flex-col items-center text-center group">
+                <div
+                    class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-truck-loading"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Express Shipping</h3>
+                <p class="text-gray-500">Fast and reliable shipping services for documents and parcels worldwide.</p>
+            </div>
+            <div class="flex flex-col items-center text-center group">
+                <div
+                    class="w-20 h-20 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Secure Warehousing</h3>
+                <p class="text-gray-500">State-of-the-art storage facilities with advanced security and inventory
+                    control.</p>
+            </div>
+            <div class="flex flex-col items-center text-center group">
+                <div
+                    class="w-20 h-20 bg-purple-50 text-purple-600 rounded-3xl flex items-center justify-center mb-6 text-3xl group-hover:scale-110 transition-transform duration-300">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Global Network</h3>
+                <p class="text-gray-500">Integrated global supply chain management across 150+ countries.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Counter Section -->
+<section class="py-20 bg-blue-900 text-white overflow-hidden relative">
+    <div class="absolute top-0 left-0 w-full h-full opacity-10">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <div class="text-5xl font-black mb-2">15M+</div>
+                <div class="text-blue-200 uppercase tracking-widest text-xs font-bold">Parcels Delivered</div>
+            </div>
+            <div>
+                <div class="text-5xl font-black mb-2">200+</div>
+                <div class="text-blue-200 uppercase tracking-widest text-xs font-bold">Countries Covered</div>
+            </div>
+            <div>
+                <div class="text-5xl font-black mb-2">50k+</div>
+                <div class="text-blue-200 uppercase tracking-widest text-xs font-bold">Happy Clients</div>
+            </div>
+            <div>
+                <div class="text-5xl font-black mb-2">99.9%</div>
+                <div class="text-blue-200 uppercase tracking-widest text-xs font-bold">Success Rate</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="py-24 bg-white px-4 md:px-12">
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Hundreds of Businesses <br>Trust Global Courier
+                </h2>
+                <p class="text-gray-600 text-lg mb-8">We don't just move boxes; we move businesses. Our integrated
+                    logistics solutions are designed to give you a competitive edge in the global marketplace.</p>
+                <div class="space-y-4">
+                    <div
+                        class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl hover:bg-blue-50 transition-colors border border-transparent hover:border-blue-100">
+                        <div class="text-blue-600 text-xl mt-1"><i class="fas fa-bolt"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg">Instant Quote & Booking</h4>
+                            <p class="text-gray-500">Get pricing and book your shipment in under 2 minutes through our
+                                portal.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl hover:bg-green-50 transition-colors border border-transparent hover:border-green-100">
+                        <div class="text-green-600 text-xl mt-1"><i class="fas fa-shield-heart"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg">Premium Insurance</h4>
+                            <p class="text-gray-500">Every shipment is backed by our comprehensive global insurance
+                                policy.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex items-start gap-4 p-6 bg-gray-50 rounded-2xl hover:bg-purple-50 transition-colors border border-transparent hover:border-purple-100">
+                        <div class="text-purple-600 text-xl mt-1"><i class="fas fa-user-shield"></i></div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-lg">Dedicated Support</h4>
+                            <p class="text-gray-500">A personal account manager for every corporate partner we work
+                                with.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+                <img src="{% static 'images/slider_1.png' %}"
+                    class="rounded-2xl h-64 w-full object-cover shadow-lg translate-y-8" alt="Feature 1">
+                <img src="{% static 'images/slider_2.png' %}" class="rounded-2xl h-64 w-full object-cover shadow-lg"
+                    alt="Feature 2">
+                <img src="{% static 'images/slider_3.png' %}"
+                    class="rounded-2xl h-64 w-full object-cover shadow-lg translate-y-8" alt="Feature 3">
+                <img src="{% static 'images/slider_4.png' %}" class="rounded-2xl h-64 w-full object-cover shadow-lg"
+                    alt="Feature 4">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Process Section -->
+<section class="py-24 bg-gray-50 px-4 md:px-12">
+    <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">How It Works</h2>
+        <p class="text-gray-500 mb-16 max-w-2xl mx-auto">Our streamlined process ensures your parcel moves from sender
+            to receiver with maximum efficiency and zero stress.</p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+            <!-- Connector Line -->
+            <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-blue-100 -z-0"></div>
+
+            <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div
+                    class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-6">
+                    1</div>
+                <h4 class="font-bold text-gray-800 mb-2">Book Online</h4>
+                <p class="text-xs text-gray-500">Enter details and get an instant quote.</p>
+            </div>
+            <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div
+                    class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-6">
+                    2</div>
+                <h4 class="font-bold text-gray-800 mb-2">Pack & Label</h4>
+                <p class="text-xs text-gray-500">Secure your item and print the auto-generated tag.</p>
+            </div>
+            <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div
+                    class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-6">
+                    3</div>
+                <h4 class="font-bold text-gray-800 mb-2">Pick-up</h4>
+                <p class="text-xs text-gray-500">Our courier collects from your doorstep.</p>
+            </div>
+            <div class="relative z-10 bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
+                <div
+                    class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-6">
+                    4</div>
+                <h4 class="font-bold text-gray-800 mb-2">Delivery</h4>
+                <p class="text-xs text-gray-500">Recipient signs and you get instant notification.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sustainability Section -->
+<section class="py-24 bg-green-900 border-t border-green-800 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+        <i class="fas fa-leaf text-[40rem] absolute -bottom-48 -right-48 text-white"></i>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="flex flex-col md:flex-row items-center gap-16">
+            <div class="md:w-1/2">
+                <span
+                    class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-6 inline-block">2030
+                    Net Zero Goal</span>
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter">Green Logistics for <br>a
+                    Better Tomorrow</h2>
+                <p class="text-xl text-green-100 mb-10 leading-relaxed">We are committed to full decarbonization. Our
+                    transition to 100% electric delivery vehicles and carbon-neutral warehousing is already underway.
+                </p>
+                <div class="grid grid-cols-2 gap-8 text-white">
+                    <div>
+                        <div class="text-3xl font-bold mb-1">65%</div>
+                        <div class="text-green-300 text-sm uppercase tracking-widest font-bold">Electric Fleet</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold mb-1">0%</div>
+                        <div class="text-green-300 text-sm uppercase tracking-widest font-bold">Plastic Waste</div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="{% static 'images/industry/sustainability.jpg' %}"
+                    class="rounded-3xl shadow-2xl border-4 border-green-800" alt="Sustainability">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Customer Testimonials Section -->
+<section class="py-24 bg-gray-50 px-4 md:px-12 overflow-hidden">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-gray-800 mb-4 tracking-tighter">Client Success Stories</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">Read what our global partners have to say about the speed and
+                security of our logistics network.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for review in latest_reviews %}
+            <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100 hover:shadow-xl transition-all">
+                <div class="flex text-yellow-400 mb-6">
+                    {% for i in "12345" %}
+                    {% if forloop.counter <= review.rating %} <i class="fas fa-star text-sm"></i>
+                        {% else %}
+                        <i class="far fa-star text-sm"></i>
+                        {% endif %}
+                        {% endfor %}
+                </div>
+                <p class="text-gray-600 mb-8 italic leading-relaxed text-lg">"{{ review.message|truncatewords:25 }}"</p>
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        {{ review.name|slice:":1"|upper }}
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-800">{{ review.name }}</h4>
+                        <p class="text-xs text-gray-400 uppercase tracking-widest">{{ review.created_at|date:"M d, Y" }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="{% url 'reviews' %}" class="btn btn-ghost text-blue-600 font-bold capitalize">View All Reviews <i
+                    class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-24 bg-white px-4 md:px-12">
+    <div class="container mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16">
+            <div class="lg:w-1/3">
+                <h2 class="text-4xl font-black text-gray-800 mb-6 tracking-tighter leading-tight">Got Questions?
+                    <br>We've Got Answers</h2>
+                <p class="text-gray-500 mb-8">Everything you need to know about our global shipping and logistics
+                    processes.</p>
+                <a href="{% url 'contact' %}"
+                    class="btn btn-primary rounded-2xl px-12 h-14 shadow-lg shadow-blue-200">Contact Support</a>
+            </div>
+            <div class="lg:w-2/3">
+                <div class="join join-vertical w-full space-y-4">
+                    <div class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
+                        <input type="radio" name="my-accordion-1" checked="checked" />
+                        <div class="collapse-title text-xl font-bold text-gray-800 p-8">
+                            How do I track my shipment?
+                        </div>
+                        <div class="collapse-content px-8 pb-8 text-gray-500 border-t border-gray-50 pt-6">
+                            <p>Simply enter your unique tracking number on our <a href="{% url 'tracking' %}"
+                                    class="text-blue-600 font-bold">Track Parcel</a> page for real-time GPS updates and
+                                historical travel data.</p>
+                        </div>
+                    </div>
+                    <div class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
+                        <input type="radio" name="my-accordion-1" />
+                        <div class="collapse-title text-xl font-bold text-gray-800 p-8">
+                            What items are restricted?
+                        </div>
+                        <div class="collapse-content px-8 pb-8 text-gray-500 border-t border-gray-50 pt-6">
+                            <p>We restrict hazardous materials, illegal substances, and perishables without specialized
+                                containers. Please contact our support team for a full list of restricted global items.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
+                        <input type="radio" name="my-accordion-1" />
+                        <div class="collapse-title text-xl font-bold text-gray-800 p-8">
+                            Do you offer insurance for high-value items?
+                        </div>
+                        <div class="collapse-content px-8 pb-8 text-gray-500 border-t border-gray-50 pt-6">
+                            <p>Yes, all shipments come with basic insurance. For high-value goods like electronics or
+                                machinery, we offer premium coverage up to $500,000.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Blog Section -->
+<section class="py-24 bg-white px-4 md:px-12">
+    <div class="container mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Industry Insights</h2>
+                <p class="text-gray-500">Stay updated with the latest trends in logistics and shipping.</p>
+            </div>
+            <a href="{% url 'blog_list' %}" class="btn btn-outline btn-primary rounded-xl">View All Posts</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for post in featured_posts %}
+            <div
+                class="card bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100 overflow-hidden">
+                <div class="h-48 bg-blue-50 relative overflow-hidden">
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" class="w-full h-full object-cover" alt="{{ post.title }}">
+                    {% else %}
+                    <div class="flex items-center justify-center h-full">
+                        <i class="fas fa-newspaper fa-4x text-blue-200"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="p-6">
+                    <div class="text-xs text-blue-500 font-bold uppercase mb-2">{{ post.created_at|date:"M d, Y" }}
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 hover:text-blue-600 transition-colors"><a
+                            href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    <p class="text-gray-500 text-sm mb-4 line-clamp-2">{{ post.content }}</p>
+                    <a href="{{ post.get_absolute_url }}" class="text-blue-600 font-bold flex items-center gap-1 group">
+                        Read More <i
+                            class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+    });
+</script>
+{% endblock %}

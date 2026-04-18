@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Services - Global Courier{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="bg-blue-900 py-24 text-center text-white">
+    <div class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold mb-6">Our Services</h1>
+        <p class="text-xl text-blue-200 max-w-2xl mx-auto">Comprehensive logistics solutions tailored to your business
+            needs, powered by advanced technology and a global network.</p>
+    </div>
+</div>
+
+<!-- Services Grid -->
+<section class="py-24 px-4 md:px-12 bg-white">
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Air Freight -->
+            <div class="group">
+                <div class="relative h-64 rounded-3xl overflow-hidden mb-8">
+                    <img src="{% static 'images/slider_1.png' %}"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        alt="Air Freight">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-20"></div>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Air Freight</h3>
+                <p class="text-gray-600 mb-6">When time is of the essence, our air freight solutions provide the speed
+                    and reliability you need to meet tight deadlines globally.</p>
+                <ul class="space-y-2 text-sm text-gray-500 mb-8">
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Next flight out services</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Charter services for large cargo</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Door-to-door delivery</li>
+                </ul>
+                <button class="btn btn-primary rounded-xl">Learn More</button>
+            </div>
+
+            <!-- Sea Freight -->
+            <div class="group">
+                <div class="relative h-64 rounded-3xl overflow-hidden mb-8">
+                    <img src="{% static 'images/slider_4.png' %}"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        alt="Sea Freight">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-20"></div>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Sea Freight</h3>
+                <p class="text-gray-600 mb-6">Cost-effective solutions for large-scale shipments. We handle Full
+                    Container Load (FCL) and Less than Container Load (LCL) worldwide.</p>
+                <ul class="space-y-2 text-sm text-gray-500 mb-8">
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Weekly departures to major ports</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Port-to-port and door-to-door</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Customs brokerage included</li>
+                </ul>
+                <button class="btn btn-primary rounded-xl">Learn More</button>
+            </div>
+
+            <!-- Warehousing -->
+            <div class="group">
+                <div class="relative h-64 rounded-3xl overflow-hidden mb-8">
+                    <img src="{% static 'images/slider_3.png' %}"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        alt="Warehousing">
+                    <div class="absolute inset-0 bg-blue-900 bg-opacity-20"></div>
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Warehousing</h3>
+                <p class="text-gray-600 mb-6">State-of-the-art storage and distribution centers equipped with the latest
+                    inventory management technology.</p>
+                <ul class="space-y-2 text-sm text-gray-500 mb-8">
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Temperature-controlled storage</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Order fulfillment and returns</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Real-time inventory tracking</li>
+                </ul>
+                <button class="btn btn-primary rounded-xl">Learn More</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industry Solutions Section -->
+<section class="py-24 bg-gray-50 px-4 md:px-12">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-black text-gray-800 mb-4 tracking-tighter">Specialized Solutions by Industry</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">Different industries have different demands. We provide
+                tailor-made logistics frameworks for specialized sectors.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Healthcare -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3 shrink-0">
+                    <img src="{% static 'images/industry/healthcare.jpg' %}"
+                        class="rounded-2xl h-48 w-full object-cover" alt="Healthcare">
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">Healthcare & Pharma</h4>
+                    <p class="text-gray-500 text-sm mb-6">Cold-chain solutions for life-saving medicine. Fully compliant
+                        with international medical standards.</p>
+                    <a href="#" class="text-blue-600 font-bold text-sm">Case Study <i
+                            class="fas fa-chevron-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- High Tech -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3 shrink-0">
+                    <img src="{% static 'images/industry/hightech.jpg' %}" class="rounded-2xl h-48 w-full object-cover"
+                        alt="High Tech">
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">High-Tech & Electronics</h4>
+                    <p class="text-gray-500 text-sm mb-6">Secure, anti-static transport for high-value electronic
+                        components and consumer gadgets.</p>
+                    <a href="#" class="text-blue-600 font-bold text-sm">View Solutions <i
+                            class="fas fa-chevron-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Ecommerce -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3 shrink-0">
+                    <img src="{% static 'images/industry/ecommerce.jpg' %}" class="rounded-2xl h-48 w-full object-cover"
+                        alt="Ecommerce">
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">E-commerce E-fulfillment</h4>
+                    <p class="text-gray-500 text-sm mb-6">Scale your business with our global sorting and automated
+                        return management systems.</p>
+                    <a href="#" class="text-blue-600 font-bold text-sm">Scale Fast <i
+                            class="fas fa-chevron-right ml-1"></i></a>
+                </div>
+            </div>
+            <!-- Industrial -->
+            <div
+                class="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-gray-100 flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3 shrink-0">
+                    <img src="{% static 'images/industry/industrial.jpg' %}"
+                        class="rounded-2xl h-48 w-full object-cover" alt="Industrial">
+                </div>
+                <div>
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">Industrial Machinery</h4>
+                    <p class="text-gray-500 text-sm mb-6">Expert handling for heavy machinery and manufacturing parts
+                        across multi-modal networks.</p>
+                    <a href="#" class="text-blue-600 font-bold text-sm">Request Heavy Lift <i
+                            class="fas fa-chevron-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-24 bg-white px-4 md:px-12">
+    <div class="container mx-auto max-w-4xl">
+        <h2 class="text-4xl font-bold text-gray-800 text-center mb-16">Frequently Asked Questions</h2>
+        <div class="join join-vertical w-full">
+            <div class="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="my-accordion-4" checked="checked" />
+                <div class="collapse-title text-xl font-bold">
+                    How long does international shipping take?
+                </div>
+                <div class="collapse-content text-gray-500">
+                    <p>Depending on the service level chosen, international shipping can take anywhere from 24 hours
+                        (Overnight) to 7 business days (Standard). Customs clearance in individual countries can
+                        sometimes add 1-2 days.</p>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="my-accordion-4" />
+                <div class="collapse-title text-xl font-bold">
+                    Can I change the delivery address after booking?
+                </div>
+                <div class="collapse-content text-gray-500">
+                    <p>Yes, as long as the parcel has not left the origin sorting facility. You can update the delivery
+                        address via our portal or by contacting customer support immediately.</p>
+                </div>
+            </div>
+            <div class="collapse collapse-arrow join-item border border-base-300">
+                <input type="radio" name="my-accordion-4" />
+                <div class="collapse-title text-xl font-bold">
+                    What happens if my parcel is lost?
+                </div>
+                <div class="collapse-content text-gray-500">
+                    <p>While loss is extremely rare (less than 0.01%), all shipments are insured. We will initiate a
+                        tracking investigation, and if the parcel cannot be located within 5 days, we will process your
+                        insurance claim immediately.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-24 bg-blue-50 px-4">
+    <div class="container mx-auto text-center max-w-3xl">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">Need a custom logistics solution?</h2>
+        <p class="text-gray-600 text-lg mb-10">Our experts are ready to design a supply chain strategy that fits your
+            unique business requirements flawlessly.</p>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}" class="btn btn-primary btn-lg rounded-2xl px-12 shadow-lg">Request a Quote</a>
+            <a href="#" class="btn btn-outline border-blue-600 text-blue-600 btn-lg rounded-2xl px-12">Call Us Now</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

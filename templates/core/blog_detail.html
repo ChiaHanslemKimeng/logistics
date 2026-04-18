@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }} - Global Courier Blog{% endblock %}
+
+{% block content %}
+<article class="bg-white">
+    <!-- Post Hero -->
+    <div class="bg-blue-900 py-32 text-center text-white px-4">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-blue-300 font-bold uppercase tracking-widest text-sm mb-6">Article Case Study</div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-8 leading-tight">{{ post.title }}</h1>
+            <div class="flex items-center justify-center gap-6 text-sm opacity-80">
+                <span class="flex items-center gap-2"><i class="far fa-user"></i> {{ post.author }}</span>
+                <span class="flex items-center gap-2"><i class="far fa-calendar-alt"></i> {{ post.created_at|date:"F d, Y" }}</span>
+                <span class="flex items-center gap-2"><i class="far fa-clock"></i> 5 min read</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto max-w-3xl px-4 py-24">
+        <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-8">
+            <p class="text-2xl text-gray-800 font-medium italic border-l-4 border-blue-600 pl-6 py-2">
+                "{{ post.content|truncatewords:20 }}"
+            </p>
+
+            <p>{{ post.content }}</p>
+
+            <p>At Global Courier, we are continuously monitoring these trends to better serve our clients. Our
+                commitment to innovation ensures that your shipments are handled using the latest technologies and
+                methodologies available in the market today.</p>
+
+            <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100 my-12">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Key Takeaways:</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Automation
+                        reduces human error in documentation.</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Real-time
+                        tracking is mandatory for modern customer satisfaction.</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i>
+                        Sustainability is a key competitive advantage in 2026.</li>
+                </ul>
+            </div>
+
+            <p>As we continue to expand our global network, we remain focused on providing the most secure and efficient
+                logistics experience possible. Stay tuned for more updates as we lead the charge into the future of
+                shipping.</p>
+        </div>
+
+        <!-- Share & Tags -->
+        <div class="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <span class="font-bold text-gray-800">Share:</span>
+                <a href="#" class="btn btn-sm btn-circle btn-ghost"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="btn btn-sm btn-circle btn-ghost"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="btn btn-sm btn-circle btn-ghost"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <a href="{% url 'blog_list' %}" class="btn btn-ghost text-blue-600 capitalize font-bold"><i
+                    class="fas fa-arrow-left mr-2"></i> Back to Blog</a>
+        </div>
+    </div>
+</article>
+
+<!-- Newsletter Section -->
+<section class="py-24 bg-gray-50 px-4">
+    <div class="container mx-auto text-center max-w-3xl">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Stay Ahead of the Curve</h2>
+        <p class="text-gray-500 mb-10">Subscribe to our newsletter and receive the latest logistics insights and
+            exclusive offers directly in your inbox.</p>
+        <div class="join w-full max-w-md">
+            <input class="input input-bordered join-item flex-grow h-14 rounded-l-2xl px-6"
+                placeholder="Your email address" />
+            <button class="btn btn-primary join-item h-14 rounded-r-2xl px-8">Subscribe</button>
+        </div>
+    </div>
+</section>
+{% endblock %}
