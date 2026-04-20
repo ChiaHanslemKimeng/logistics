@@ -1,28 +1,28 @@
 from django.contrib import admin
 from django.db import models
-from django.forms import Select
+from django import forms
 from .models import Shipment, ShipmentHistory, Package
+
 
 class ShipmentHistoryInline(admin.TabularInline):
     model = ShipmentHistory
     extra = 1
     fields = ('status', 'location_country', 'location_city', 'remarks', 'timestamp')
     readonly_fields = ('timestamp',)
-    formfield_overrides = {
-        models.CharField: {'widget': Select},
-    }
+    # No formfield_overrides here — location_city is free text
 
-@admin.register(Package)
-class PackageAdmin(admin.ModelAdmin):
-    list_display = ('package_id', 'shipment', 'weight', 'status')
-    search_fields = ('package_id', 'shipment__tracking_number')
 
 class PackageInline(admin.TabularInline):
     model = Package
     extra = 1
     fields = ('package_id', 'description', 'weight', 'dimensions', 'status')
 
-from django.forms import Select
+
+@admin.register(Package)
+class PackageAdmin(admin.ModelAdmin):
+    list_display = ('package_id', 'shipment', 'weight', 'status')
+    search_fields = ('package_id', 'shipment__tracking_number')
+
 
 @admin.register(Shipment)
 class ShipmentAdmin(admin.ModelAdmin):
@@ -31,12 +31,11 @@ class ShipmentAdmin(admin.ModelAdmin):
     search_fields = ('tracking_number', 'sender_name', 'receiver_name', 'product')
     inlines = [PackageInline, ShipmentHistoryInline]
     date_hierarchy = 'created_at'
-    
-    # Explicitly force dropdowns for country fields
-    formfield_overrides = {
-        models.CharField: {'widget': Select},
-    }
-    
+    readonly_fields = ('tracking_number',)
+
+    # No formfield_overrides — Django will automatically render Select
+    # for fields with choices= and TextInput for plain CharFields
+
     fieldsets = (
         ('Shipment Identity', {
             'fields': ('tracking_number', 'status', 'carrier', 'shipment_mode', 'product', 'quantity')
@@ -50,8 +49,11 @@ class ShipmentAdmin(admin.ModelAdmin):
         ('Receiver Details', {
             'fields': ('receiver_name', 'receiver_email', 'receiver_phone')
         }),
+        ('Parcel Info', {
+            'fields': ('weight', 'shipment_type', 'description')
+        }),
         ('Parcel Route', {
-            'fields': ('weight', 'shipment_type', 'origin_country', 'origin_city', 'destination_country', 'destination_city')
+            'fields': ('origin_country', 'origin_city', 'destination_country', 'destination_city')
         }),
         ('Current Location', {
             'fields': ('current_country', 'current_city')
@@ -60,13 +62,11 @@ class ShipmentAdmin(admin.ModelAdmin):
             'fields': ('created_by', 'assigned_to', 'comment')
         }),
     )
-    readonly_fields = ('tracking_number',)
+
 
 @admin.register(ShipmentHistory)
 class ShipmentHistoryAdmin(admin.ModelAdmin):
     list_display = ('shipment', 'status', 'location_city', 'timestamp')
     list_filter = ('status', 'location_country', 'timestamp')
     search_fields = ('shipment__tracking_number',)
-    formfield_overrides = {
-        models.CharField: {'widget': Select},
-    }
+    # No formfield_overrides — location_city is free text
