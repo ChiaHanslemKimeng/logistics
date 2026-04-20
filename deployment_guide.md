@@ -4,6 +4,19 @@ This guide outlines the steps to deploy your **Global Courier Tracking System** 
 
 ---
 
+## Part 0: First-Time Git Setup (If needed)
+If you get an "Author identity unknown" error, run these commands with your info:
+```powershell
+git config --global user.email "your-email@example.com"
+git config --global user.name "Your Name"
+```
+
+> [!IMPORTANT]
+> **Private Repositories & Tokens**: If your repository is **Private**, GitHub will ask for a password. You **cannot** use your regular password. You must use a **Personal Access Token (PAT)**:
+> 1. Go to GitHub -> Settings -> Developer Settings -> Personal access tokens -> Tokens (classic).
+> 2. Generate a new token with `repo` permissions.
+> 3. Use this token instead of your password when cloning.
+
 ## Part 1: GitHub Repository (Version Control)
 
 1. **Create Repository**: Log in to [GitHub](https://github.com) and create a new public or private repository named `Logistics`.

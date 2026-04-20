@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-(t5ie-1@0zn*jrca*4ox$nc991n0ffetjdjfc&yjgu0dqnw_v0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['smc.pythonanywhere.com', 'localhost', '127.0.0.1', 'fleetdirectdelivery.com', 'www.fleetdirectdelivery.com']
 
 
 # Application definition

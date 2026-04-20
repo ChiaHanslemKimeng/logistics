@@ -6,7 +6,7 @@ from .forms import ReviewForm
 
 def home(request):
     featured_posts = BlogPost.objects.all()[:3]
-    latest_reviews = Review.objects.filter(is_approved=True)[:5]
+    latest_reviews = Review.objects.filter(is_approved=True)[:6]
     return render(request, 'core/home.html', {
         'featured_posts': featured_posts,
         'latest_reviews': latest_reviews

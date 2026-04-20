@@ -1,10 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Global Courier - Professional Tracking System{% endblock %}</title>
+    <title>{% block title %}Fleet Direct Delivery - Professional Tracking System{% endblock %}</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
+    <link rel="shortcut icon" href="{% static 'images/favicon.svg' %}">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -26,45 +29,16 @@
     {% block extra_css %}{% endblock %}
 </head>
 
-<body class="bg-gray-50 min-h-screen flex flex-col">
+<body class="bg-gray-50 min-h-screen flex flex-col overflow-x-hidden">
     <!-- Navbar -->
     <div class="navbar bg-white shadow-md border-b border-gray-100 px-4 md:px-12 sticky top-0 z-50 no-print">
         <div class="navbar-start">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </div>
-                <ul tabindex="0"
-                    class="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow-2xl bg-white border border-gray-100 rounded-2xl w-64 font-bold text-blue-900">
-                    <li class="{% if request.resolver_match.url_name == 'home' %}bg-blue-50 rounded-xl{% endif %}"><a
-                            href="{% url 'home' %}">Home</a></li>
-                    <li class="{% if request.resolver_match.url_name == 'services' %}bg-blue-50 rounded-xl{% endif %}">
-                        <a href="{% url 'services' %}">Services</a>
-                    </li>
-                    <li class="{% if request.resolver_match.url_name == 'tracking' %}bg-blue-50 rounded-xl{% endif %}">
-                        <a href="{% url 'tracking' %}">Track Parcel</a>
-                    </li>
-                    <li class="{% if request.resolver_match.url_name == 'reviews' %}bg-blue-50 rounded-xl{% endif %}"><a
-                            href="{% url 'reviews' %}">Reviews</a></li>
-                    <li class="{% if request.resolver_match.url_name == 'blog_list' %}bg-blue-50 rounded-xl{% endif %}">
-                        <a href="{% url 'blog_list' %}">Blog</a>
-                    </li>
-                    <li class="{% if request.resolver_match.url_name == 'about' %}bg-blue-50 rounded-xl{% endif %}"><a
-                            href="{% url 'about' %}">About</a></li>
-                    <li class="{% if request.resolver_match.url_name == 'contact' %}bg-blue-50 rounded-xl{% endif %}"><a
-                            href="{% url 'contact' %}">Contact</a></li>
-                </ul>
-            </div>
             <a href="{% url 'home' %}"
                 class="text-2xl font-black text-blue-900 flex items-center gap-2 tracking-tighter">
                 <div class="bg-blue-600 text-white p-1 rounded-lg">
                     <i class="fas fa-shipping-fast"></i>
                 </div>
-                <span>GLOBAL<span class="text-blue-500 font-light">COURIER</span></span>
+                <span>FLEET<span class="text-blue-500 font-light">DIRECT</span></span>
             </a>
         </div>
         <div class="navbar-center hidden lg:flex">
@@ -86,18 +60,45 @@
                     class="transition-colors {% if request.resolver_match.url_name == 'contact' %}text-blue-600 border-b-2 border-blue-600{% else %}hover:text-blue-600{% endif %}">Contact</a>
             </div>
         </div>
-        <div class="navbar-end">
+        <div class="navbar-end gap-2">
             {% if user.is_staff %}
             <a href="/admin/" class="btn btn-primary btn-sm rounded-xl shadow-lg shadow-blue-200">Admin Dashboard</a>
             <form action="{% url 'logout' %}" method="post" class="ml-2">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-ghost btn-sm rounded-xl">Logout</button>
             </form>
-            {% else %}
-            <a href="{% url 'tracking' %}" class="btn btn-primary btn-sm rounded-xl shadow-lg shadow-blue-100">
-                <i class="fas fa-search mr-1"></i> Track Now
-            </a>
             {% endif %}
+
+            <!-- Mobile Menu moved to right -->
+            <div class="dropdown dropdown-end">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-16 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="0"
+                    class="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow-2xl bg-white border border-gray-100 rounded-2xl w-64 font-bold text-blue-900 right-0">
+                    <li class="{% if request.resolver_match.url_name == 'home' %}bg-blue-50 rounded-xl{% endif %}"><a
+                            href="{% url 'home' %}">Home</a></li>
+                    <li class="{% if request.resolver_match.url_name == 'services' %}bg-blue-50 rounded-xl{% endif %}">
+                        <a href="{% url 'services' %}">Services</a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'tracking' %}bg-blue-50 rounded-xl{% endif %}">
+                        <a href="{% url 'tracking' %}">Track Parcel</a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'reviews' %}bg-blue-50 rounded-xl{% endif %}"><a
+                            href="{% url 'reviews' %}">Reviews</a></li>
+                    <li class="{% if request.resolver_match.url_name == 'blog_list' %}bg-blue-50 rounded-xl{% endif %}">
+                        <a href="{% url 'blog_list' %}">Blog</a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'about' %}bg-blue-50 rounded-xl{% endif %}"><a
+                            href="{% url 'about' %}">About</a></li>
+                    <li class="{% if request.resolver_match.url_name == 'contact' %}bg-blue-50 rounded-xl{% endif %}"><a
+                            href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -142,7 +143,7 @@
     <footer class="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300 no-print">
         <aside class="items-center grid-flow-col">
             <i class="fas fa-shipping-fast fa-2x"></i>
-            <p>Global Courier Tracking System <br />Providing reliable logistics since 2024</p>
+            <p>Fleet Direct Delivery System <br />Providing reliable logistics since 2024</p>
         </aside>
         <nav class="md:place-self-center md:justify-self-end">
             <div class="grid grid-flow-col gap-4">

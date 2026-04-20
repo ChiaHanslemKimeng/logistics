@@ -14,7 +14,8 @@
                     <i class="fas fa-box-open fa-2x"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-800">Tracking Number: <span class="text-blue-600">{{ shipment.tracking_number }}</span></h1>
+                    <h1 class="text-2xl font-bold text-gray-800">Tracking Number: <span class="text-blue-600">{{
+                            shipment.tracking_number }}</span></h1>
                     <p class="text-gray-500">Registered on {{ shipment.created_at|date:"F d, Y" }}</p>
                 </div>
             </div>
@@ -38,7 +39,7 @@
                         <i class="fas fa-shipping-fast fa-2x"></i>
                     </div>
                     <div>
-                        <h1 class="text-4xl font-black text-gray-900 leading-none">GLOBAL COURIER</h1>
+                        <h1 class="text-4xl font-black text-gray-900 leading-none">FLEET DIRECT</h1>
                         <p class="text-blue-500 font-bold tracking-widest uppercase text-xs">Official Logistics Receipt
                         </p>
                     </div>
@@ -67,7 +68,8 @@
                     </h3>
                     <div class="bg-blue-50/50 p-4 rounded-2xl mb-6">
                         <p class="text-sm font-bold text-blue-800 uppercase tracking-wider mb-1">Last seen at:</p>
-                        <p class="text-lg font-black text-gray-800">{{ shipment.current_city }}, {{ shipment.get_current_country_display }}</p>
+                        <p class="text-lg font-black text-gray-800">{{ shipment.current_city }}, {{
+                            shipment.get_current_country_display }}</p>
                     </div>
                     <ul class="steps steps-vertical w-full">
                         <li class="step step-primary text-sm font-medium">Manifest Created</li>
@@ -112,11 +114,13 @@
                         </div>
                         <div class="flex justify-between items-center py-2 border-b border-gray-50">
                             <span class="text-gray-400">Departure Date</span>
-                            <span class="font-bold text-gray-800">{% if shipment.departure_time %}{{ shipment.departure_time|date:"F d, Y" }}{% else %}TBA{% endif %}</span>
+                            <span class="font-bold text-gray-800">{% if shipment.departure_time %}{{
+                                shipment.departure_time|date:"F d, Y" }}{% else %}TBA{% endif %}</span>
                         </div>
                         <div class="flex justify-between items-center py-2 border-b border-gray-50">
                             <span class="text-gray-400">Expected Delivery</span>
-                            <span class="font-bold text-blue-600">{{ shipment.estimated_delivery_date|date:"F d, Y" }}</span>
+                            <span class="font-bold text-blue-600">{{ shipment.estimated_delivery_date|date:"F d, Y"
+                                }}</span>
                         </div>
                         <div class="flex justify-between items-center py-2 border-b border-gray-50">
                             <span class="text-gray-400">Service Type</span>
@@ -137,7 +141,8 @@
                 {% if shipment.packages.all %}
                 <div class="card bg-gray-900 p-8 rounded-3xl shadow-xl border border-gray-800">
                     <h3 class="text-xl font-bold mb-6 text-white flex items-center gap-3">
-                        <i class="fas fa-layer-group text-blue-400"></i> Package Inventory ({{ shipment.packages.count }})
+                        <i class="fas fa-layer-group text-blue-400"></i> Package Inventory ({{ shipment.packages.count
+                        }})
                     </h3>
                     <div class="space-y-4">
                         {% for package in shipment.packages.all %}
@@ -146,7 +151,8 @@
                             <div class="flex justify-between items-start mb-2">
                                 <span class="text-[10px] font-bold text-blue-400 uppercase tracking-tighter">Package ID:
                                     {{ package.package_id }}</span>
-                                <span class="badge badge-sm badge-outline text-white opacity-60">{{ package.status }}</span>
+                                <span class="badge badge-sm badge-outline text-white opacity-60">{{ package.status
+                                    }}</span>
                             </div>
                             <p class="text-sm font-bold text-white mb-2">{{ package.description }}</p>
                             <div class="flex gap-4 text-[11px] text-gray-400">
@@ -193,7 +199,8 @@
                                 <div>
                                     <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Departure
                                         Port</p>
-                                    <p class="text-sm font-bold text-gray-700">{{ shipment.origin_city }}, {{ shipment.get_origin_country_display }}</p>
+                                    <p class="text-sm font-bold text-gray-700">{{ shipment.origin_city }}, {{
+                                        shipment.get_origin_country_display }}</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Departure
@@ -221,12 +228,14 @@
                                 <div>
                                     <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Arrival
                                         Destination</p>
-                                    <p class="text-sm font-bold text-gray-700">{{ shipment.destination_city }}, {{ shipment.get_destination_country_display }}</p>
+                                    <p class="text-sm font-bold text-gray-700">{{ shipment.destination_city }}, {{
+                                        shipment.get_destination_country_display }}</p>
                                 </div>
                                 <div class="text-right">
                                     <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Expected On
                                     </p>
-                                    <p class="text-sm font-bold text-blue-600">{{ shipment.estimated_delivery_date|date:"F d" }}</p>
+                                    <p class="text-sm font-bold text-blue-600">{{
+                                        shipment.estimated_delivery_date|date:"F d" }}</p>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +252,8 @@
 
                 <!-- Timeline and History -->
                 <div class="card bg-white p-8 rounded-3xl shadow-sm border border-gray-100">
-                    <h3 class="text-xl font-bold mb-8 text-gray-800">Shipment Timeline (Last Updated: {{ shipment.updated_at|time:"H:i" }})</h3>
+                    <h3 class="text-xl font-bold mb-8 text-gray-800">Shipment Timeline (Last Updated: {{
+                        shipment.updated_at|time:"H:i" }})</h3>
                     <div class="relative">
                         <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-100"></div>
                         <ul class="space-y-10 relative">
@@ -258,9 +268,11 @@
                                     <div class="flex justify-between items-start mb-1">
                                         <h4 class="font-black text-gray-800">{{ history.get_status_display }}</h4>
                                         <span
-                                            class="text-[10px] font-bold text-gray-400 uppercase bg-gray-50 px-2 py-1 rounded-md">{{ history.timestamp|date:"M d, H:i" }}</span>
+                                            class="text-[10px] font-bold text-gray-400 uppercase bg-gray-50 px-2 py-1 rounded-md">{{
+                                            history.timestamp|date:"M d, H:i" }}</span>
                                     </div>
-                                    <p class="text-sm text-gray-500">{{ history.location_city }}, {{ history.get_location_country_display }}</p>
+                                    <p class="text-sm text-gray-500">{{ history.location_city }}, {{
+                                        history.get_location_country_display }}</p>
                                     {% if history.remarks %}
                                     <p
                                         class="mt-2 text-xs text-gray-400 italic bg-gray-50 p-2 rounded-lg border-l-2 border-blue-200">
