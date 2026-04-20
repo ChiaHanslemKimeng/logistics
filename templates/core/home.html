@@ -380,38 +380,35 @@
             </div>
             <div class="lg:w-2/3">
                 <div class="join join-vertical w-full space-y-4">
-                    <div class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
-                        <input type="radio" name="my-accordion-1" checked="checked" />
-                        <div class="collapse-title text-xl font-bold text-gray-800 p-8">
+                    <details class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
+                        <summary class="collapse-title text-xl font-bold text-gray-800 p-8">
                             How do I track my shipment?
-                        </div>
+                        </summary>
                         <div class="collapse-content px-8 pb-8 text-gray-500 border-t border-gray-50 pt-6">
                             <p>Simply enter your unique tracking number on our <a href="{% url 'tracking' %}"
                                     class="text-blue-600 font-bold">Track Parcel</a> page for real-time GPS updates and
                                 historical travel data.</p>
                         </div>
-                    </div>
-                    <div class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
-                        <input type="radio" name="my-accordion-1" />
-                        <div class="collapse-title text-xl font-bold text-gray-800 p-8">
+                    </details>
+                    <details class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
+                        <summary class="collapse-title text-xl font-bold text-gray-800 p-8">
                             What items are restricted?
-                        </div>
+                        </summary>
                         <div class="collapse-content px-8 pb-8 text-gray-500 border-t border-gray-50 pt-6">
                             <p>We restrict hazardous materials, illegal substances, and perishables without specialized
                                 containers. Please contact our support team for a full list of restricted global items.
                             </p>
                         </div>
-                    </div>
-                    <div class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
-                        <input type="radio" name="my-accordion-1" />
-                        <div class="collapse-title text-xl font-bold text-gray-800 p-8">
+                    </details>
+                    <details class="collapse collapse-plus bg-white border border-gray-100 rounded-3xl shadow-sm">
+                        <summary class="collapse-title text-xl font-bold text-gray-800 p-8">
                             Do you offer insurance for high-value items?
-                        </div>
+                        </summary>
                         <div class="collapse-content px-8 pb-8 text-gray-500 border-t border-gray-50 pt-6">
                             <p>Yes, all shipments come with basic insurance. For high-value goods like electronics or
                                 machinery, we offer premium coverage up to $500,000.</p>
                         </div>
-                    </div>
+                    </details>
                 </div>
             </div>
         </div>
